@@ -30,7 +30,8 @@ jobs:
     - name: Buid Docker Image
       uses: docker/build-push-action@v6.10.0
       with:
-        file: .
+        context: .
+        push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/maven:latest
        
        
