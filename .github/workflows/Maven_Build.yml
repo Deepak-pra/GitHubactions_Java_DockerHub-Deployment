@@ -11,8 +11,8 @@ jobs:
   Build:
     runs-on: ubuntu-latest  
     env:
-      DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASSWORD=${{ secrets.DOCKER_PASSWORD }}
+      DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_PASSWORD=${{ secrets.DOCKERHUB_PASSWORD }}
 
     steps:
       - name: Checkout Code
@@ -25,6 +25,6 @@ jobs:
           cache: maven
       - name: Build with Maven
         run: mvn clean install
-      - Docker Login
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Login to DockerHub
+        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
         
