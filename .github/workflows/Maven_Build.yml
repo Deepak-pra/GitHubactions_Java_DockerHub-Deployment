@@ -24,6 +24,12 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/new_demo_app:latest
+       - name: Docker Swam deployment
+         uses: simbamarufu1/docker-swarm-deploy-action@1.0.3
+         with:
+          remote_host: ip-172-31-81-161.ec2.interna
+          ssh_private_key: ${{ secrets.EC2_PRIVATE_KEY }}
+       
         
        
        
